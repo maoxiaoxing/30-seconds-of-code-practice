@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+  <script>
+    const observeMutations = (element, callback, options) => {
+      const observer = new MutationObserver(mutations =>
+        mutations.forEach(m => callback(m))
+      );
+      observer.observe(
+        element,
+        Object.assign(
+          {
+            childList: true,
+            attributes: true,
+            attributeOldValue: true,
+            characterData: true,
+            characterDataOldValue: true,
+            subtree: true,
+          },
+          options
+        )
+      );
+      return observer;
+    };
+
+
+    const box = document.querySelector('.box')
+
+    const ob =  observeMutations(box, (m) => {
+      console.log(m)
+    })
+    box.innerHTML = 123
+    box.style.height = '200px'
+
+  </script>
+</body>
+</html>
