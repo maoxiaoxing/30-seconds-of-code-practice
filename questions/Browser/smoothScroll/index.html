@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      height: 3000px;
+      background-color: green;
+    }
+    #foo {
+      width: 100px;
+      height: 30px;
+      background-color: red;
+    }
+    #bar {
+      position: relative;
+      top: 1000px;
+      width: 100px;
+      height: 30px;
+      background-color: red;
+    }
+    #scro {
+      width: 30px;
+      height: 30px;
+      background-color: grey;
+      position: fixed;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div id="foo">foo</div>
+    <div id="bar">bar</div>
+    <div id="scro"></div>
+  </div>
+  
+  <script>
+    const smoothScroll = element =>
+      document.querySelector(element).scrollIntoView({
+        behavior: 'smooth'
+      })
+
+    // const foo = document.querySelector('#foo')
+
+    console.log(scro)
+    scro.addEventListener('click', () => {
+      smoothScroll('#bar')
+    })
+  </script>
+</body>
+</html>
